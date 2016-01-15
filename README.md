@@ -1,10 +1,10 @@
-**Note: This version may not work with versions of Jetty older than 9**
+**Note: This version may not work with versions of Jetty older than 9.2**
 
 # Jetty session clustering with REDIS
 
 * [REDIS website](http://redis.io/) (tested on version 2.2.1)
 * [JEDIS website](https://github.com/xetorthio/jedis) (tested on version 2.6.0)
-* [Jetty website](http://www.eclipse.org/jetty/) (tested on version 9.2.3.v20140905)
+* [Jetty website](http://www.eclipse.org/jetty/) (tested on version 9.2.10.v20150310)
 
 ## Build instruction:
 

@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>jetty-session-redis</artifactId>
-    <version>3.0.ga-SNAPSHOT</version>
+    <version>3.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>jetty-session-redis</name>
@@ -20,25 +20,35 @@
         <developerConnection>scm:git:git@github.com:jcern/${project.name}.git</developerConnection>
         <url>http://github.com/jcern/${project.name}</url>
     </scm>
+    <properties>
+        <jetty.version>9.2.10.v20150310</jetty.version>
+
+        <jedis.version>2.6.1</jedis.version>
+        <jackson.version>2.4.3</jackson.version>
+        <junit.version>4.11</junit.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <logback.version>1.1.2</logback.version>
+        <logback-extensions.version>0.1.2</logback-extensions.version>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.6.0</version>
+            <version>${jedis.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.eclipse.jetty.aggregate</groupId>
             <artifactId>jetty-all</artifactId>
-            <version>9.2.3.v20140905</version>
+            <version>${jetty.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-nosql</artifactId>
-            <version>9.2.3.v20140905</version>
+            <version>${jetty.version}</version>
         </dependency>
 
         <!-- jetty classes + runner + jsp stack -->
@@ -56,18 +66,39 @@
         </dependency>
 
         <!-- serialization in json -->
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+<!--
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-core-asl</artifactId>
-            <version>1.9.0</version>
+            <version>${jackson.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.0</version>
+            <version>${jackson.version}</version>
             <optional>true</optional>
         </dependency>
+-->
 
         <!-- serialization in xstream -->
         <dependency>
@@ -89,28 +120,31 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.9</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
         <!-- logging -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.6.1</version>
-            <scope>test</scope>
-        </dependency>
+       
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.6.1</version>
-            <scope>test</scope>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
 
@@ -130,6 +164,7 @@
                         <exclude>**/logging.properties</exclude>
                         <exclude>**/*.js</exclude>
                         <exclude>**/*.swf</exclude>
+                        <exclude>.idea/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>
